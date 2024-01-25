@@ -5,6 +5,9 @@ import Light from "./Light";
 import Meshes from "./Meshes";
 import GLBModel from "./GLBModel";
 import { Dancer } from "./Dancer";
+import PostProcessor from "./PostProcessor";
+import { Physics } from "@react-three/cannon";
+import MeshesCannon from "./MeshesCannon";
 
 interface MainCanvasProps {}
 
@@ -24,9 +27,16 @@ function MainCanvas({}: MainCanvasProps) {
     >
       <Controls />
       <Light />
-      <Meshes />
+      {/* <PostProcessor /> */}
+      <Physics
+        gravity={[0, -9, 0]}
+        defaultContactMaterial={{ restitution: 0.1, friction: 1 }}
+      >
+        <MeshesCannon />
+      </Physics>
+      {/* <Meshes /> */}
       {/* <GLBModel /> */}
-      <Dancer />
+      {/* <Dancer /> */}
     </Canvas>
   );
 }
